@@ -31,13 +31,14 @@
                 <form class="add-book-form">
                     <h3>Add Book</h3>
                     <input class="input" type="text" id="title" placeholder="Title" required>
+                    <p class="error-msg" id="error"></p>
                     <input class="input" type="text" id="author" placeholder="Author" required>
-                    <input class="input" type="number" id="pages" placeholder="Pages" required max="10000">
+                    <input class="input" type="number" id="pages" placeholder="Pages" required min="0" max="10000">
                     <div class="have-read">
                         <label for="have-read">Have you read it?</label>
                         <input class="checkbox" type="checkbox" id="haveRead">
                     </div>
-                    <button class="btn green" type="submit">Submit</button>
+                    <button class="btn green" id="submit-book" type="submit">Submit</button>
                 </form>
             </div>
             <div class="overlay"></div>
