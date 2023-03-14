@@ -30,11 +30,27 @@ button, input {
 
 .container {
     display: grid;
-    margin: 0 auto;
     height: 100%;
     grid-template-rows: 1fr 4fr;
     gap: 5px;
 }
+
+.btn {
+    width: 100%;
+    height: 3rem;
+    color: var(--text-color-black);
+    border-radius: 18px;
+    background-color: #4C566A;
+}
+
+.btn.green {
+    background-color: lightgreen;
+}
+
+.btn.read {
+    background-color: lightcoral;
+}
+
 
 /* Header */
 
@@ -85,22 +101,18 @@ button, input {
 /* Main Content */
 
 .main-content {
-    margin: 10px;
-    max-width: 1200px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-self: center;
+    text-align: center;
 }
-
-
 
 .books-container {
     display: grid;
-    color: var(--text-color-white);
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     margin-top: 20px;
+    gap: 20px;
+    height: 100%;
 }
 
 .add-book {
@@ -112,7 +124,7 @@ button, input {
 .add-button {
     font-size: 2rem;
     height: 3rem;
-    width: 3rem;
+    width: 5rem;
     background-color: var(--sidebar-color);
     border: none;
     border-radius: 50px;
@@ -121,12 +133,21 @@ button, input {
 }
 
 .book {
-    background-color: blue;
+    background-color: var(--sidebar-color);
     color: var(--text-color-white);
     font-size: 1.3rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    border-radius: 12px;
 }
+
+.book-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 
 /* Main Content */
 
@@ -181,14 +202,6 @@ button, input {
     gap: 15px;
     font-size: 1.4rem;
     align-items: center;
-}
-
-.add-book-form .submit-book {
-    width: 100%;
-    height: 3rem;
-    color: var(--text-color-black);
-    background-color: lightgreen;
-    border-radius: 18px;
 }
 
 
