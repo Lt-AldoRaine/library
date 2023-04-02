@@ -1,4 +1,3 @@
-// Selectors
 const addBookButton = document.querySelector(".add-button");
 const overlay = document.querySelector(".overlay");
 const addBookModal = document.querySelector(".add-book-modal");
@@ -6,22 +5,24 @@ const bookContainer = document.querySelector(".books-container");
 const form = document.querySelector(".add-book-form");
 const errorMsg = document.querySelector(".error-msg");
 
-// Constructors
-
 let library = [];
 
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
+
+  get inLibrary() {
+    return this.inLibrary();
+  }
+
+  inLibrary = (newBook) => {
+    library.some((book) => book.title === newBook.title);
+  };
 }
-
-const inLibrary = (newBook) => {
-  return library.some((book) => book.title === newBook.title);
-};
-
-// UI
 
 const openBookModal = () => {
   form.reset();
@@ -49,7 +50,7 @@ const addBook = () => {
   event.preventDefault();
   const newBook = getBook();
 
-  if (inLibrary(newBook)) {
+  if (newBook.inLibrary(newBook)) {
     errorMsg.classList.add("active");
     errorMsg.textContent = "Book already in library";
     return;
@@ -57,7 +58,13 @@ const addBook = () => {
   // console.log(library.length);
   showBook();
   clickOffModal();
-  fillBookLog();
+};
+
+const removeBook = () => {
+  for (let item of library) {
+    library.splice(library.indexOf(item), 1);
+    showBook();
+  }
 };
 
 const showBook = () => {
@@ -109,15 +116,12 @@ const createBook = (item) => {
     isReadButton.classList.add("red");
   }
 
-  removeButton.addEventListener("click", () => {
-    library.splice(library.indexOf(item), 1);
-    showBook();
-  });
-
   isReadButton.addEventListener("click", () => {
     item.isRead = !item.isRead;
     showBook();
   });
+
+  removeButton.onclick = removeBook;
 };
 
 addBookButton.onclick = openBookModal;
